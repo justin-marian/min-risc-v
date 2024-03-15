@@ -10,7 +10,7 @@ The implementation of the RV32I extension. This **32-bit processor** is capable 
 
 - `RV32I Extension`: Supports the RV32I instruction set, focusing on integer arithmetic and logical operations.
 - **Five-stage pipeline architecture** for instruction execution: `Fetch`, `Decode`, `Execute`, `Memory`, and `Write-back`.
-- **Hazard detection** mechanisms to handle **data hazards** and **control hazards** within the pipeline.
+- **Hazard detection** mechanisms to handle **data hazards** and **control hazards**.
 - **Forwarding techniques** to solve data hazards by forwarding data from the `Execute` stage to *dependent stages*.
 - **Control path** for managing instruction *flow* and handling *control* hazards.
 - **Error detection** mechanisms at *each stage of the pipeline* to ensure reliable operation.
@@ -93,14 +93,14 @@ These stages work together to facilitate efficient instruction execution within 
 - **ALU Inputs:** Receive operands from the ID stage or forwarded values, providing data for ALU operations.
 - **Control Signals:** Specify the ALU operation and other execution details, ensuring correct operation execution.
 - **Branch Target Address:** Calculated for branch instructions, determining the target address for branching.
-- **EX/MEM Pipeline Register:** Transfers operation results and data to the MEM stage, facilitating data flow within the pipeline.
+- **EX/MEM Pipeline Register:** Transfers operation results and data to the MEM stage, facilitating data flow.
 
 ### Opeartions EX
 
 - Perform arithmetic, logic, or shift operation using the ALU, providing computation for instruction execution.
-- Calculate branch target addresses, it decides to take a branch based on control instructions, managing instruction flow within the pipeline.
+- Calculate branch target addresses, it decides to take a branch based on control instructions, managing instruction flow.
 - Forward data if necessary to resolve hazards, ensuring smooth execution without stalls.
-- Prepare data for the next stage based on the operation type, facilitating efficient execution and data flow within the pipeline.
+- Prepare data for the next stage based on the operation type, facilitating efficient execution and data flow.
 
 ## [Memory (MEM) | Write Back (WB)](./images/MEM_WB.png)
 
