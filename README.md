@@ -17,7 +17,9 @@ The implementation of the RV32I extension. This **32-bit processor** is capable 
 
 ## Processor Pipeline
 
-**Each stage** in the RISC-V processor pipeline plays a **crucial role** in instruction execution, contributing to higher performance through parallelism and pipelining while reducing instruction latency. Here's a brief overview of the pipeline stages:
+**Each stage** in the RISC-V processor pipeline plays a **crucial role** in instruction execution, contributing to higher performance through parallelism and pipelining while reducing instruction latency.
+
+Here's a brief overview of the pipeline stages:
 
 - Each pipeline stage has its ***own set*** of control signals and data paths.
 - Pipeline registers are used to **store data** and **control signals** between stages.
@@ -33,7 +35,7 @@ These stages work together to facilitate efficient instruction execution within 
 </p>
 
 <p align="center">
-  <b>IF (Instruction Fetch):</b> Initiates instruction fetching by accessing memory and retrieving the current instruction based on the program counter (PC). It ensures smooth instruction flow and handles branching/jumping.
+  <b>IF (Instruction Fetch):</b> initiates instruction fetching by accessing memory and retrieving the current instruction based on the program counter (PC). It ensures smooth instruction flow and handles branching/jumping.
 </p>
 
 ### Signals IF
@@ -56,7 +58,7 @@ These stages work together to facilitate efficient instruction execution within 
 </p>
 
 <p align="center">
-  <b>ID (Instruction Decode):</b> Decodes the fetched instruction, determines its operation and operands, and reads register values from the register file. Additionally, it sets up data paths for subsequent stages and identifies register sources and destinations for efficient data handling.
+  <b>ID (Instruction Decode):</b> decodes the fetched instruction, determines its operation and operands, and reads register values from the register file. Additionally, it sets up data paths for subsequent stages and identifies register sources and destinations for efficient data handling.
 </p>
 
 ### Signals ID
@@ -72,7 +74,7 @@ These stages work together to facilitate efficient instruction execution within 
 ### Operations ID
 
 - Decode the instruction and extract relevant fields, such as the opcode, source/destination registers, and immediate value, preparing it for execution.
-- Read register values from the register file, ensuring that necessary data is available for instruction execution.
+- Read register values from the register file, ensuring that data is available for instruction execution.
 - Generate control signals based on the instruction type, orchestrating pipeline operations.
 - Prepare data forwarding and branch control signals, facilitating efficient execution and hazard handling.
 
@@ -83,34 +85,34 @@ These stages work together to facilitate efficient instruction execution within 
 </p>
 
 <p align="center">
-  <b>EX (Execute):</b> The EX stage performs the actual execution of instructions, including arithmetic and logical operations using the ALU, calculation of branch targets, and management of data forwarding to resolve hazards. It also makes decisions on branching based on control instructions.
+  <b>EX (Execute):</b> performs the actual execution of instructions, including arithmetic and logical operations using the ALU, calculation of branch targets, and management of data forwarding to resolve hazards. It also makes decisions on branching based on control instructions.
 </p>
 
 ### Signals EX
 
-- **ALU Inputs:** Receive operands from the ID stage or forwarded values, providing necessary data for ALU operations.
+- **ALU Inputs:** Receive operands from the ID stage or forwarded values, providing data for ALU operations.
 - **Control Signals:** Specify the ALU operation and other execution details, ensuring correct operation execution.
 - **Branch Target Address:** Calculated for branch instructions, determining the target address for branching.
-- **EX/MEM Pipeline Register:** Transfers operation results and necessary data to the MEM stage, facilitating data flow within the pipeline.
+- **EX/MEM Pipeline Register:** Transfers operation results and data to the MEM stage, facilitating data flow within the pipeline.
 
 ### Opeartions EX
 
-- Perform arithmetic, logic, or shift operation using the ALU, providing necessary computation for instruction execution.
-- Calculate branch target addresses, deciding whether to take a branch based on control instructions, managing instruction flow within the pipeline.
+- Perform arithmetic, logic, or shift operation using the ALU, providing computation for instruction execution.
+- Calculate branch target addresses, it decides to take a branch based on control instructions, managing instruction flow within the pipeline.
 - Forward data if necessary to resolve hazards, ensuring smooth execution without stalls.
 - Prepare data for the next stage based on the operation type, facilitating efficient execution and data flow within the pipeline.
 
-## [Memory (MEM) $-$ Write Back (WB)](./images/MEM_WB.png)
+## [Memory (MEM) | Write Back (WB)](./images/MEM_WB.png)
 
 <p align="center">
   <img src="images/MEM_WB.png" width="75%" alt="MEM_WB">
 </p>
 
 <p align="center">
-  <b>MEM (Memory):</b> The MEM stage handles memory access operations for load and store instructions, ensuring seamless interaction with the data memory. It reads data from memory for load operations, writes data to memory for store operations, and manages memory-related hazards such as cache misses or contention.
+  <b>MEM (Memory):</b> handles memory access operations for load and store instructions, ensuring seamless interaction with the data memory. It reads data from memory for load operations, writes data to memory for store operations, and manages memory-related hazards such as cache misses or contention.
 </p>
 <p align="center">
-  <b>WB (Write Back):</b> The WB stage completes the instruction execution cycle by writing the final results back to the register file. It updates register values based on the instruction's execution, ensuring subsequent instructions have access to the updated data.
+  <b>WB (Write Back):</b> completes the instruction execution cycle by writing the final results back to the register file. It updates register values based on the instruction's execution, ensuring subsequent instructions have access to the updated data.
 </p>
 
 ### Signals MEM
@@ -123,7 +125,7 @@ These stages work together to facilitate efficient instruction execution within 
 ### Opearations MEM
 
 - Accesses data memory for load/store instructions, ensuring proper data interaction.
-- Reads data from memory for load instructions, retrieving necessary data.
+- Reads data from memory for load instructions, retrieving  data.
 - Writes data to memory for store instructions, managing storage.
 - Manages memory-related hazards like cache misses or contention, ensuring synchronization and operation.
 
