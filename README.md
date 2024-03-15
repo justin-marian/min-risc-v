@@ -14,7 +14,7 @@ The implementation of the RV32I extension. This **32-bit processor** is capable 
 - **Forwarding techniques** to solve data hazards by forwarding data from the `Execute` stage to *dependent stages*.
 - **Control path** for managing instruction *flow* and handling *control* hazards.
 - **Error detection** mechanisms at *each stage of the pipeline* to ensure reliable operation.
--- **ISA Table** provides additional details about each instruction format in the RISC-V architecture. It outlines their specific functionalities and use cases:
+- **ISA Table** provides additional details about each instruction format in the RISC-V architecture. It outlines their specific functionalities and use cases:
 
 | Format   | Description                                              | Example                         |
 |:--------:|:---------------------------------------------------------|:-------------------------------|
