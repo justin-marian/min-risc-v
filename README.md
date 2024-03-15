@@ -49,7 +49,7 @@ These stages work together to facilitate efficient instruction execution within 
 
 - Increment PC: Advances to the next instruction  in memory, ensuring sequential instruction fetching.
 - Fetch Instruction: Accesses memory to retrieve the instruction using the current value of the PC, retrieving the instruction stored at that address.
-- Control Signal Determination: Identifies branching/jumping instructions for deferred execution. However, branching or jumping instructions is deferred until the ID stage, where the decision is made whether to update the PC.
+- Control Signal Determination: Identifies branching/jumping instructions for deferred execution. However, branching or jumping instructions is deferred until the ID stage; decision is made whether to update the PC.
 
 ## [Instruction Decode (ID)](./images/ID.png)
 
