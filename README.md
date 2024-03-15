@@ -4,16 +4,16 @@
 
 The `Tiny RISC-V processor` is a **minimalist implementation** based on the [RISC-V Instruction Set Architecture (ISA)](./documents/tinyrv-isa.txt). The processor is implemented more from a logical perspective of how it works.
 
-This project focuses on implementing the RV32I extension, which defines a **32-bit processor** capable of executing integer arithmetic and logical instructions without support for **floating-point operations or multiplication/division** hardware.
+The implementation of the RV32I extension. This **32-bit processor** is capable of executing integer arithmetic and logical instructions without support for **floating-point operations or multiplication/division**.
 
 ## Key Features
 
 - `RV32I Extension`: Supports the RV32I instruction set, focusing on integer arithmetic and logical operations.
-- `Five-Stage Pipeline`: Implements a classic **five-stage pipeline architecture** for instruction execution, including `Fetch`, `Decode`, `Execute`, `Memory`, and `Write-back` stages.
-- `Hazard Detection`: Incorporates **hazard detection** mechanisms to handle **data hazards** and **control hazards** within the pipeline.
-- `Forwarding Unit`: Utilizes **forwarding techniques** to resolve data hazards by forwarding data from the execution stage to *dependent stages*.
-- `Control Path`: Implements a **control path** for managing instruction *flow* and handling *control* hazards.
-- `Error Detection`: Includes **error detection** mechanisms at *each stage of the pipeline* to ensure reliable operation.
+- Implements a classic **five-stage pipeline architecture** for instruction execution, including `Fetch`, `Decode`, `Execute`, `Memory`, and `Write-back` stages.
+- Incorporates **hazard detection** mechanisms to handle **data hazards** and **control hazards** within the pipeline.
+- Utilizes **forwarding techniques** to resolve data hazards by forwarding data from the execution stage to *dependent stages*.
+- Implements a **control path** for managing instruction *flow* and handling *control* hazards.
+- Includes **error detection** mechanisms at *each stage of the pipeline* to ensure reliable operation.
 
 ## Processor Pipeline
 
@@ -48,7 +48,7 @@ These stages work together to facilitate efficient instruction execution within 
 ### Instruction Decode (ID)
 
 <p align="center">
-  <img src="images/ID.png" width="50%" alt="ID">
+  <img src="images/ID.png" width="75%" alt="ID">
 </p>
 
 **ID (Instruction Decode):** The ID stage decodes the fetched instruction, determines its operation and operands, and reads register values from the register file. Additionally, it sets up data paths for subsequent stages and identifies register sources and destinations for efficient data handling.
@@ -71,7 +71,7 @@ These stages work together to facilitate efficient instruction execution within 
 ### Execute (EX)
 
 <p align="center">
-  <img src="images/EX.png" width="50%" alt="EX">
+  <img src="images/EX.png" width="75%" alt="EX">
 </p>
 
 **EX (Execute):** The EX stage performs the actual execution of instructions, including arithmetic and logical operations using the ALU, calculation of branch targets, and management of data forwarding to resolve hazards. It also makes decisions on branching based on control instructions.
@@ -91,7 +91,7 @@ These stages work together to facilitate efficient instruction execution within 
 ### Memory (MEM) $-$ Write Back (WB)
 
 <p align="center">
-  <img src="images/MEM_WB.png" width="50%" alt="MEM_WB">
+  <img src="images/MEM_WB.png" width="75%" alt="MEM_WB">
 </p>
 
 **MEM (Memory):** The MEM stage handles memory access operations for load and store instructions, ensuring seamless interaction with the data memory. It reads data from memory for load operations, writes data to memory for store operations, and manages memory-related hazards such as cache misses or contention.
