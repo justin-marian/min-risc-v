@@ -63,13 +63,13 @@ These stages work together to facilitate efficient instruction execution within 
 
 ### Signals ID
 
-- **Instruction:** Contains the decoded instruction, providing operation information.
-- **Registers:** Provides register values for instruction operands, ensuring data availability.
-- **Control Signals:** Specifies operations (e.g., ALU selection, register write), ensuring correct execution.
-- **Immediate Generation:** Generates immediates for specific instructions, aiding arithmetic or logical operations.
-- **Forwarding Signals:** Indicates data forwarding necessity for hazard resolution, preventing stalls.
-- **Branch Control Signals:** Determines branch conditions, managing instruction flow.
-- **ID/EX Pipeline Register:** Transfers decoded instruction and control signals to the EX stage.
+- Instruction, contains the decoded instruction, providing operation information.
+- Registers provide values for instruction operands, ensuring data availability.
+- Control Signals specifies operations (e.g., ALU selection, register write), ensuring correct execution.
+- Immediate Generation for specific instructions, aiding arithmetic or logical operations.
+- Forwarding Signals indicates data forwarding necessity for hazard resolution, preventing stalls.
+- Branch Control Signals determines branch conditions, managing instruction flow.
+- ID/EX Pipeline Register transfers decoded instruction and control signals to the EX stage.
 
 ### Operations ID
 
@@ -98,7 +98,7 @@ These stages work together to facilitate efficient instruction execution within 
 ### Opeartions EX
 
 - Perform arithmetic, logic, or shift operation using the ALU, providing computation for instruction execution.
-- Calculate branch target addresses, it decides to take a branch based on control instructions, managing instruction flow.
+- Calculate branch target addresses, it decides to take a branch based on control instructions, managing instruction flow. Determines branch targets, controls branching.
 - Forward data if necessary to resolve hazards, ensuring smooth execution without stalls.
 - Prepare data for the next stage based on the operation type, facilitating efficient execution and data flow.
 
@@ -131,7 +131,7 @@ These stages work together to facilitate efficient instruction execution within 
 
 ### Signals WB
 
-- **Register Write Data:** Result of the operation to be written back to the register file, updating register values for subsequent instructions.
+- **Register Write Data:** Result of the operation to be written back to the register file, update old values.
 - **Write Register:** Specifies destination register for write operation.
 - **RegWrite:** Control signal enabling register writing, managing register file updates.
 
