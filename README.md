@@ -26,7 +26,7 @@ The implementation of the RV32I extension. This **32-bit processor** is capable 
 
 These stages work together to facilitate efficient instruction execution within the RISC-V processor pipeline, demonstrating the effectiveness of parallelism and pipelining.
 
-## Instruction Fetch (IF)
+## [Instruction Fetch (IF)](./images/IF.png)
 
 <p align="center">
   <img src="images/IF.png" width="75%" alt="IF">
@@ -49,7 +49,7 @@ These stages work together to facilitate efficient instruction execution within 
 - Fetch Instruction: Accesses memory to retrieve the instruction using the current value of the PC, retrieving the instruction stored at that address.
 - Control Signal Determination: Identifies branching/jumping instructions for deferred execution. However, branching or jumping instructions is deferred until the ID stage, where the decision is made whether to update the PC.
 
-## Instruction Decode (ID)
+## [Instruction Decode (ID)](./images/ID.png)
 
 <p align="center">
   <img src="images/ID.png" width="75%" alt="ID">
@@ -76,7 +76,7 @@ These stages work together to facilitate efficient instruction execution within 
 - Generate control signals based on the instruction type, orchestrating pipeline operations.
 - Prepare data forwarding and branch control signals, facilitating efficient execution and hazard handling.
 
-## Execute (EX)
+## [Execute (EX)](./images/EX.png)
 
 <p align="center">
   <img src="images/EX.png" width="75%" alt="EX">
@@ -100,7 +100,7 @@ These stages work together to facilitate efficient instruction execution within 
 - Forward data if necessary to resolve hazards, ensuring smooth execution without stalls.
 - Prepare data for the next stage based on the operation type, facilitating efficient execution and data flow within the pipeline.
 
-## Memory (MEM) $-$ Write Back (WB)
+## [Memory (MEM) $-$ Write Back (WB)](./images/MEM_WB.png)
 
 <p align="center">
   <img src="images/MEM_WB.png" width="75%" alt="MEM_WB">
@@ -108,6 +108,9 @@ These stages work together to facilitate efficient instruction execution within 
 
 <p align="center">
   <b>MEM (Memory):</b> The MEM stage handles memory access operations for load and store instructions, ensuring seamless interaction with the data memory. It reads data from memory for load operations, writes data to memory for store operations, and manages memory-related hazards such as cache misses or contention.
+</p>
+<p align="center">
+  <b>WB (Write Back):</b> The WB stage completes the instruction execution cycle by writing the final results back to the register file. It updates register values based on the instruction's execution, ensuring subsequent instructions have access to the updated data.
 </p>
 
 ### Signals MEM
@@ -123,10 +126,6 @@ These stages work together to facilitate efficient instruction execution within 
 - Reads data from memory for load instructions, retrieving necessary data.
 - Writes data to memory for store instructions, managing storage.
 - Manages memory-related hazards like cache misses or contention, ensuring synchronization and operation.
-
-<p align="center">
-  <b>WB (Write Back):</b> The WB stage completes the instruction execution cycle by writing the final results back to the register file. It updates register values based on the instruction's execution, ensuring subsequent instructions have access to the updated data.
-</p>
 
 ### Signals WB
 
