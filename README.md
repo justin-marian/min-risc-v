@@ -32,7 +32,9 @@ These stages work together to facilitate efficient instruction execution within 
   <img src="images/IF.png" width="75%" alt="IF">
 </p>
 
-**IF (Instruction Fetch):** Initiates instruction fetching by accessing memory and retrieving the current instruction based on the program counter (PC). It ensures smooth instruction flow and handles branching/jumping.
+<p align="center">
+  <b>IF (Instruction Fetch):</b> Initiates instruction fetching by accessing memory and retrieving the current instruction based on the program counter (PC). It ensures smooth instruction flow and handles branching/jumping.
+</p>
 
 ### Signals IF
 
@@ -53,7 +55,9 @@ These stages work together to facilitate efficient instruction execution within 
   <img src="images/ID.png" width="75%" alt="ID">
 </p>
 
-**ID (Instruction Decode):** Decodes the fetched instruction, determines its operation and operands, and reads register values from the register file. Additionally, it sets up data paths for subsequent stages and identifies register sources and destinations for efficient data handling.
+<p align="center">
+  <b>ID (Instruction Decode):</b> Decodes the fetched instruction, determines its operation and operands, and reads register values from the register file. Additionally, it sets up data paths for subsequent stages and identifies register sources and destinations for efficient data handling.
+</p>
 
 ### Signals ID
 
@@ -78,7 +82,9 @@ These stages work together to facilitate efficient instruction execution within 
   <img src="images/EX.png" width="75%" alt="EX">
 </p>
 
-**EX (Execute):** The EX stage performs the actual execution of instructions, including arithmetic and logical operations using the ALU, calculation of branch targets, and management of data forwarding to resolve hazards. It also makes decisions on branching based on control instructions.
+<p align="center">
+  <b>EX (Execute):</b> The EX stage performs the actual execution of instructions, including arithmetic and logical operations using the ALU, calculation of branch targets, and management of data forwarding to resolve hazards. It also makes decisions on branching based on control instructions.
+</p>
 
 ### Signals EX
 
@@ -100,9 +106,9 @@ These stages work together to facilitate efficient instruction execution within 
   <img src="images/MEM_WB.png" width="75%" alt="MEM_WB">
 </p>
 
-**MEM (Memory):** The MEM stage handles memory access operations for load and store instructions, ensuring seamless interaction with the data memory. It reads data from memory for load operations, writes data to memory for store operations, and manages memory-related hazards such as cache misses or contention.
-
-**WB (Write Back):** The WB stage completes the instruction execution cycle by writing the final results back to the register file. It updates register values based on the instruction's execution, ensuring subsequent instructions have access to the updated data.
+<p align="center">
+  <b>MEM (Memory):</b> The MEM stage handles memory access operations for load and store instructions, ensuring seamless interaction with the data memory. It reads data from memory for load operations, writes data to memory for store operations, and manages memory-related hazards such as cache misses or contention.
+</p>
 
 ### Signals MEM
 
@@ -117,6 +123,10 @@ These stages work together to facilitate efficient instruction execution within 
 - Reads data from memory for load instructions, retrieving necessary data.
 - Writes data to memory for store instructions, managing storage.
 - Manages memory-related hazards like cache misses or contention, ensuring synchronization and operation.
+
+<p align="center">
+  <b>WB (Write Back):</b> The WB stage completes the instruction execution cycle by writing the final results back to the register file. It updates register values based on the instruction's execution, ensuring subsequent instructions have access to the updated data.
+</p>
 
 ### Signals WB
 
