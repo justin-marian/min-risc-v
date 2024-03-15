@@ -1,8 +1,8 @@
-# [Tiny-RISC-V](./documents/draw_riscv.pdf)
+# [Tiny-RISC-V](./pdfs/draw_riscv.pdf)
 
 ## Description
 
-The `Tiny RISC-V processor` is a **minimalist implementation** based on the [RISC-V Instruction Set Architecture (ISA)](./documents/tinyrv-isa.txt). The processor is implemented more from a logical perspective of how it works.
+The `Tiny RISC-V processor` is a **minimalist implementation** based on the [RISC-V Instruction Set Architecture (ISA)](./pdfs/tinyrv-isa.txt). The processor is implemented more from a logical perspective of how it works.
 
 The implementation of the RV32I extension. This **32-bit processor** is capable of executing integer arithmetic and logical instructions without support for **floating-point operations or multiplication/division**.
 
@@ -32,18 +32,18 @@ These stages work together to facilitate efficient instruction execution within 
   <img src="images/IF.png" width="75%" alt="IF">
 </p>
 
-**IF (Instruction Fetch):** Initiates the instruction fetching process by accessing the instruction memory and retrieving the current instruction based on the program counter (PC). It ensures a smooth flow of instructions into the pipeline and handles branching or jumping operations.
+**IF (Instruction Fetch):** Initiates instruction fetching by accessing memory and retrieving the current instruction based on the program counter (PC). It ensures smooth instruction flow and handles branching/jumping.
 
 - **Signals:**
-  - **PC:** holds the address of the next instruction to be fetched. It is updated based on the control signals and branch outcomes.
-  - **Instruction Memory:** provides the instruction located at the address specified by the PC. The fetched instruction is then transferred to the subsequent pipeline stages.
-  - **PC Write:** determines whether the PC should be updated. It is controlled by branch or jump instructions, indicating whether the PC should be modified to redirect the instruction flow.
-  - **IF/ID Pipeline Register:** The IF/ID pipeline register serves as a buffer between the IF and ID stages, transferring the fetched instruction to the ID stage for further processing.
+  - **PC:** Holds the address of the next instruction to fetch, updated based on control signals and branch outcomes.
+  - **Instruction Memory:** Provides the instruction at the PC address, transferred to subsequent pipeline stages.
+  - **PC Write:** Determines PC update, controlled by branch/jump instructions, indicating whether the PC should be modified to redirect the instruction flow.
+  - **IF/ID Pipeline Register:** Serves as a buffer, transferring fetched instruction to the ID stage.
 
 - **Operations:**
-  - Increment PC: The PC is incremented to point to the address of the next instruction in memory, ensuring sequential instruction fetching.
-  - Fetch Instruction: The instruction memory is accessed using the current value of the PC, retrieving the instruction stored at that address.
-  - Control Signal Determination: Control signals for branching and jumping are determined based on the fetched instruction. However, the execution of branching or jumping instructions is deferred until the ID stage, where the decision is made whether to update the PC.
+  - Increment PC: Advances to the next instruction  in memory, ensuring sequential instruction fetching.
+  - Fetch Instruction: Accesses memory to retrieve the instruction using the current value of the PC, retrieving the instruction stored at that address.
+  - Control Signal Determination: Identifies branching/jumping instructions for deferred execution. However, branching or jumping instructions is deferred until the ID stage, where the decision is made whether to update the PC.
 
 ### Instruction Decode (ID)
 
@@ -51,22 +51,22 @@ These stages work together to facilitate efficient instruction execution within 
   <img src="images/ID.png" width="75%" alt="ID">
 </p>
 
-**ID (Instruction Decode):** The ID stage decodes the fetched instruction, determines its operation and operands, and reads register values from the register file. Additionally, it sets up data paths for subsequent stages and identifies register sources and destinations for efficient data handling.
+**ID (Instruction Decode):** Decodes the fetched instruction, determines its operation and operands, and reads register values from the register file. Additionally, it sets up data paths for subsequent stages and identifies register sources and destinations for efficient data handling.
 
 - **Signals:**
-  - **Instruction:** Contains the decoded instruction, providing information about the operation to be performed.
-  - **Registers:** Provides register values for the instruction's operands, ensuring that necessary data is available for execution.
-  - **Control Signals:** Control signals specify various operations, such as ALU operation selection and register write enable, ensuring correct instruction execution.
-  - **Immediate Generation:** Generates immediate values for certain instructions, facilitating efficient execution of arithmetic or logical operations.
-  - **Forwarding Signals:** Indicate whether data forwarding is needed to resolve hazards, ensuring smooth execution without stalls.
-  - **Branch Control Signals:** Determine branch conditions and control branching within the pipeline, managing instruction flow effectively.
-  - **ID/EX Pipeline Register:** Transfers decoded instruction and relevant control signals to the EX stage, enabling seamless execution of instructions.
+  - **Instruction:** Contains the decoded instruction, providing operation information.
+  - **Registers:** Provides register values for instruction operands, ensuring data availability.
+  - **Control Signals:** Specifies operations (e.g., ALU selection, register write), ensuring correct execution.
+  - **Immediate Generation:** Generates immediates for specific instructions, aiding arithmetic or logical operations.
+  - **Forwarding Signals:** Indicates data forwarding necessity for hazard resolution, preventing stalls.
+  - **Branch Control Signals:** Determines branch conditions, managing instruction flow.
+  - **ID/EX Pipeline Register:** Transfers decoded instruction and control signals to the EX stage.
 
 - **Operations:**
   - Decode the instruction and extract relevant fields, such as the opcode, source/destination registers, and immediate value, preparing it for execution.
   - Read register values from the register file, ensuring that necessary data is available for instruction execution.
-  - Generate control signals based on the instruction type, orchestrating various operations within the pipeline for correct execution.
-  - Prepare data forwarding and branch control signals for the next stage, facilitating efficient execution and handling of hazards.
+  - Generate control signals based on the instruction type, orchestrating pipeline operations.
+  - Prepare data forwarding and branch control signals, facilitating efficient execution and hazard handling.
 
 ### Execute (EX)
 
@@ -99,22 +99,22 @@ These stages work together to facilitate efficient instruction execution within 
 - **Signals:**
   - **Data Memory:** Reads/writes data from/to memory, facilitating interaction with the data memory.
   - **Data Address:** Specifies the memory address for data access, determining the location of data in memory.
-  - **Write Data:** Data to be written to memory for store instructions, ensuring proper data storage.
-  - **MEM/WB Pipeline Register:** Transfers data read from memory or other operation results to the WB stage, enabling seamless data flow within the pipeline.
+  - **Write Data:** Data to be written for store instructions, ensuring proper storage.
+  - **MEM/WB Pipeline Register:** Transfers data or operation results to the WB stage for further processing.
 
 - **Operations:**
-  - Access data memory for load/store instructions, ensuring proper interaction with the data memory.
-  - Read data from memory for load instructions, retrieving necessary data for instruction execution.
-  - Write data to memory for store instructions, ensuring proper data storage and management.
-  - Manage memory-related hazards such as cache misses or contention, ensuring proper synchronization and operation within the pipeline.
+  - Accesses data memory for load/store instructions, ensuring proper data interaction.
+  - Reads data from memory for load instructions, retrieving necessary data.
+  - Writes data to memory for store instructions, managing storage.
+  - Manages memory-related hazards like cache misses or contention, ensuring synchronization and operation.
 
 **WB (Write Back):** The WB stage completes the instruction execution cycle by writing the final results back to the register file. It updates register values based on the instruction's execution, ensuring subsequent instructions have access to the updated data.
 
 - **Signals:**
   - **Register Write Data:** Result of the operation to be written back to the register file, updating register values for subsequent instructions.
-  - **Write Register:** Specifies the destination register for the write operation, determining where the operation result should be stored.
-  - **RegWrite:** Control signal to enable register writing, managing register file updates effectively.
+  - **Write Register:** Specifies destination register for write operation.
+  - **RegWrite:** Control signal enabling register writing, managing register file updates.
 
 - **Operations:**
-  - Write back the operation result to the specified register in the register file, updating register values for subsequent instructions.
-  - Control whether the register write operation should be enabled, ensuring proper register file management and operation within the pipeline.
+  - Writes back operation result to specified register, updating values for subsequent instructions.
+  - Controls register write operation, ensuring proper management within pipeline.
