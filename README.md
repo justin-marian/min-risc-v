@@ -17,7 +17,7 @@ The implementation of the RV32I extension. This **32-bit processor** is capable 
 - **ISA Table** provides additional details about each instruction format in the RISC-V architecture. It outlines their specific functionalities and use cases:
 
 | Format       | Description                                         | Example                        |
-|:------====--:|:----------------------------------------------------|:-------------------------------|
+|:------------:|:----------------------------------------------------|:-------------------------------|
 | **R-Type**   | Arithmetic and logical operations between registers | `add rd, rs1, rs2`             |
 | **I-Type**   | Instructions involving immediate values             | `addi rd, rs1, imm`            |
 | **S-Type**   | Store instructions                                  | `sw rs2, offset(rs1)`          |
