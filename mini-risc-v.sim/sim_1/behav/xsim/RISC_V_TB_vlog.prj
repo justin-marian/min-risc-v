@@ -1,0 +1,32 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../mini-risc-v.srcs/sources_1/new/ALU.v" \
+"../../../../mini-risc-v.srcs/sources_1/new/ALUControl.v" \
+"../../../../mini-risc-v.srcs/sources_1/new/Adder.v" \
+"../../../../mini-risc-v.srcs/sources_1/new/BranchControl.v" \
+"../../../../mini-risc-v.srcs/sources_1/new/ControlPath.v" \
+"../../../../mini-risc-v.srcs/sources_1/new/DataMemory.v" \
+"../../../../mini-risc-v.srcs/sources_1/new/EX.v" \
+"../../../../mini-risc-v.srcs/sources_1/new/EX_MEM.v" \
+"../../../../mini-risc-v.srcs/sources_1/new/Forwarding.v" \
+"../../../../mini-risc-v.srcs/sources_1/new/HazardDetection.v" \
+"../../../../mini-risc-v.srcs/sources_1/new/ID.v" \
+"../../../../mini-risc-v.srcs/sources_1/new/ID_EX.v" \
+"../../../../mini-risc-v.srcs/sources_1/new/IF.v" \
+"../../../../mini-risc-v.srcs/sources_1/new/IF_ID.v" \
+"../../../../mini-risc-v.srcs/sources_1/new/IMMgen.v" \
+"../../../../mini-risc-v.srcs/sources_1/new/InstructionMemory.v" \
+"../../../../mini-risc-v.srcs/sources_1/new/MEM.v" \
+"../../../../mini-risc-v.srcs/sources_1/new/MEM_WB.v" \
+"../../../../mini-risc-v.srcs/sources_1/new/MUX2_1.v" \
+"../../../../mini-risc-v.srcs/sources_1/new/MUX4_1.v" \
+"../../../../mini-risc-v.srcs/sources_1/new/PC.v" \
+"../../../../mini-risc-v.srcs/sources_1/new/RISCV.v" \
+"../../../../mini-risc-v.srcs/sources_1/new/Registers.v" \
+"../../../../mini-risc-v.srcs/sim_1/new/RISCV_TB.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
