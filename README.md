@@ -16,20 +16,20 @@ The implementation of the RV32I extension. This **32-bit processor** is capable 
 - **Error detection** mechanisms at *each stage of the pipeline* to ensure reliable operation.
 - **ISA Table** provides additional details about each instruction format in the RISC-V architecture. It outlines their specific functionalities and use cases:
 
-| Format   | Description                                              | Example                         |
-|:--------:|:---------------------------------------------------------|:-------------------------------|
-| R-Type   | Arithmetic and logical operations between registers | `add rd, rs1, rs2`             |
-| I-Type   | Instructions involving immediate values             | `addi rd, rs1, imm`            |
-| S-Type   | Store instructions                                  | `sw rs2, offset(rs1)`          |
-| B-Type   | Branch instructions                                 | `beq rs1, rs2, label`          |
-| U-Type   | Instructions with a 20-bit immediate value          | `lui rd, imm`                  |
-| J-Type   | Jump instructions                                   | `jal rd, label`                |
+| Format       | Description                                         | Example                        |
+|:------====--:|:----------------------------------------------------|:-------------------------------|
+| **R-Type**   | Arithmetic and logical operations between registers | `add rd, rs1, rs2`             |
+| **I-Type**   | Instructions involving immediate values             | `addi rd, rs1, imm`            |
+| **S-Type**   | Store instructions                                  | `sw rs2, offset(rs1)`          |
+| **B-Type**   | Branch instructions                                 | `beq rs1, rs2, label`          |
+| **U-Type**   | Instructions with a 20-bit immediate value          | `lui rd, imm`                  |
+| **J-Type**   | Jump instructions                                   | `jal rd, label`                |
 
-> NOTE:
-> S-Type - transferring data from register to memory.
-> B-Type - evaluating conditions to update the program counter.
-> U-Type - often used for PC-relative addressing.
-> J-Type - directly modifying the program counter.
+> **NOTE:**
+> **S-Type** [transferring data from register to memory]
+> **B-Type** [evaluating conditions to update the program counter]
+> **U-Type** [often used for PC-relative addressing]
+> **J-Type** [directly modifying the program counter]
 
 ## Processor Pipeline
 
