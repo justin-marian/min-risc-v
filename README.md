@@ -9,9 +9,9 @@ The implementation of the RV32I extension. This **32-bit processor** is capable 
 ## Key Features
 
 - `RV32I Extension`: Supports the RV32I instruction set, focusing on integer arithmetic and logical operations.
-- Classic **five-stage pipeline architecture** for instruction execution, including `Fetch`, `Decode`, `Execute`, `Memory`, and `Write-back` stages.
+- **Five-stage pipeline architecture** for instruction execution: `Fetch`, `Decode`, `Execute`, `Memory`, and `Write-back`.
 - **Hazard detection** mechanisms to handle **data hazards** and **control hazards** within the pipeline.
-- **Forwarding techniques** to resolve data hazards by forwarding data from the execution stage to *dependent stages*.
+- **Forwarding techniques** to solve data hazards by forwarding data from the `Execute` stage to *dependent stages*.
 - **Control path** for managing instruction *flow* and handling *control* hazards.
 - **Error detection** mechanisms at *each stage of the pipeline* to ensure reliable operation.
 
@@ -19,12 +19,12 @@ The implementation of the RV32I extension. This **32-bit processor** is capable 
 
 **Each stage** in the RISC-V processor pipeline plays a **crucial role** in instruction execution, contributing to higher performance through parallelism and pipelining while reducing instruction latency. Here's a brief overview of the pipeline stages:
 
-- Each pipeline stage has its own set of control signals and data paths.
-- Pipeline registers are used to store data and control signals between stages.
-- Control signals determine the flow of data and execution of operations in each stage.
-- Hazards, such as data hazards and control hazards, are detected and resolved using forwarding logic and branch prediction techniques.
+- Each pipeline stage has its ***own set*** of control signals and data paths.
+- Pipeline registers are used to **store data** and **control signals** between stages.
+- Control signals determine the **flow of data** and **execution of operations** in each stage.
+- Hazards, such as **data hazards** and **control hazards**, are detected and resolved using **forwarding logic** and **branch prediction techniques**.
 
-These stages work together to facilitate efficient instruction execution within the RISC-V processor pipeline, demonstrating the effectiveness of parallelism and pipelining in achieving optimal performance.
+These stages work together to facilitate efficient instruction execution within the RISC-V processor pipeline, demonstrating the effectiveness of parallelism and pipelining.
 
 ### Instruction Fetch (IF)
 
